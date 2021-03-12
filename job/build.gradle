@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+
+group 'com.huan'
+version '0.0.1-SNAPSHOT'
+
+
+dependencies {
+    compile(project(":sso"))
+    annotationProcessor('org.projectlombok:lombok')
+    compileOnly('org.projectlombok:lombok')
+    implementation "org.mapstruct:mapstruct"
+    annotationProcessor "org.mapstruct:mapstruct-processor"
+
+    compile group: 'com.xuxueli', name: 'xxl-job-core'
+    compile('com.alibaba.cloud:spring-cloud-starter-alibaba-seata')
+}

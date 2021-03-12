@@ -1,0 +1,13 @@
+spring:
+    profiles:
+        active: mysql,service-sso,redis,nacos,logging,dubbo,file,version
+    application:
+        name: sso
+    cloud:
+        nacos:
+            config:
+                prefix: dev
+                server-addr: njpkhuan.top:8848
+                file-extension: yaml
+                namespace: a87ad7e5-ae2c-4b7b-8446-c6151c2d2ba4
+                group: DEFAULT_GROUP

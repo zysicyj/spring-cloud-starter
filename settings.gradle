@@ -1,0 +1,12 @@
+rootProject.name = 'spring-cloud-starter'
+
+//认证中心
+include 'sso'
+//通用模块
+include 'common'
+//网关
+include 'gateway'
+//业务
+include 'service'
+//定时任务
+include 'job'

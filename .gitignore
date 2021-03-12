@@ -1,0 +1,39 @@
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+!.idea/runConfigurations
+*.iws
+*.iml
+*.ipr
+out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+/hs_err_pid25224.log
+/.gradle/6.4.1/fileContent/annotation-processors.bin
+/.gradle/6.4.1/javaCompile/classAnalysis.bin
+/.gradle/6.4.1/javaCompile/jarAnalysis.bin
+/.gradle/6.4.1/fileHashes/resourceHashesCache.bin
+/.gradle/6.4.1/javaCompile/taskHistory.bin
+/.gradle/workspace-id.txt
+/.gradle/

@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot'
+}
+group 'com.huan'
+
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+dependencies {
+    //所有API接口都仍这里
+
+
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    compile('org.apache.commons:commons-lang3')
+    compile('org.mapstruct:mapstruct')
+    compile('com.github.xiaoymin:knife4j-spring-boot-starter')
+    compile('org.mapstruct:mapstruct-processor')
+    compile('cn.hutool:hutool-all')
+    annotationProcessor('org.projectlombok:lombok')
+    compileOnly('org.projectlombok:lombok')
+    compile('com.alibaba:fastjson')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('com.alibaba.cloud:spring-cloud-starter-alibaba-sentinel')
+    compile('com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery')
+    compile('com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config')
+    compile('com.alibaba.csp:sentinel-datasource-nacos')
+    compile('io.jsonwebtoken:jjwt')
+    compile 'org.springframework.security:spring-security-jwt'
+    compile 'com.alibaba:druid-spring-boot-starter'
+    compile group: 'com.alibaba.cloud', name: 'spring-cloud-starter-dubbo'
+    compile('org.springframework.boot:spring-boot-starter-validation')
+    compile('org.hibernate:hibernate-validator')
+    compile 'com.aliyun.oss:aliyun-sdk-oss'
+    compile group: 'org.apache.skywalking', name: 'apm-toolkit-trace'
+    compile group: 'io.jsonwebtoken', name: 'jjwt'
+    compile group: 'javax', name: 'javaee-api'
+    implementation group: 'org.bouncycastle', name: 'bcprov-jdk15on'
+    implementation group: 'javax.xml.bind', name: 'jaxb-api'
+    compile('org.springframework.boot:spring-boot-starter-security')
+//    compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+    compile('mysql:mysql-connector-java')
+    compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+    compile('org.springframework.session:spring-session-data-redis')
+    compile('org.springframework.security:spring-security-oauth2-jose')
+    compile('org.springframework.security:spring-security-oauth2-resource-server')
+    compile('redis.clients:jedis')
+    compileOnly('com.alibaba.cloud:spring-cloud-starter-alibaba-seata')
+    compile group: 'cn.afterturn', name: 'easypoi-spring-boot-starter'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile group: 'org.apache.curator', name: 'curator-recipes'
+}

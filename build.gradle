@@ -1,0 +1,106 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.springframework.boot' version '2.3.7.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'org.zeroturnaround.gradle.jrebel' version '1.1.10' apply false
+}
+
+group = 'com.huan'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 14
+targetCompatibility = 14
+
+ext {
+    set('springCloudAlibabaVersion', "2.2.3.RELEASE")
+    set('springCloudVersion', "Hoxton.SR9")
+}
+
+//noinspection GroovyAssignabilityCheck
+allprojects {
+    apply plugin: 'org.zeroturnaround.gradle.jrebel'
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+//noinspection GroovyAssignabilityCheck
+configure(allprojects) { project ->
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'idea'
+    apply plugin: 'java'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    dependencyManagement {
+        imports {
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+        dependencies {
+            // 阿里巴巴的Java诊断工具  http://arthas.gitee.io/
+            dependency 'com.taobao.arthas:arthas-spring-boot-starter:3.4.3'
+            dependency group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
+            // 对象拷贝  https://mapstruct.org/
+            dependency group: 'org.mapstruct', name: 'mapstruct', version: '1.4.2.Final'
+            dependency group: 'org.mapstruct', name: 'mapstruct-processor', version: '1.4.2.Final'
+            // 注解校验增强 http://hibernate.org/validator/releases/
+            dependency group: 'org.hibernate', name: 'hibernate-validator', version: '7.0.0.Final'
+            // 工具集合类  https://hutool.cn/docs/#/
+            dependency group: 'cn.hutool', name: 'hutool-all', version: '5.5.6'
+            dependency group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+            dependency group: 'mysql', name: 'mysql-connector-java', version: '8.0.22'
+            dependency group: 'com.alibaba', name: 'fastjson', version: '1.2.75'
+            dependency group: 'com.alibaba.csp', name: 'sentinel-datasource-nacos', version: '1.8.0'
+            dependency group: 'com.alibaba.csp', name: 'sentinel-spring-cloud-gateway-adapter', version: '1.8.0'
+            dependency group: 'com.alibaba.csp', name: 'sentinel-transport-simple-http', version: '1.8.0'
+            dependency group: 'redis.clients', name: 'jedis', version: '3.3.0'
+            dependency group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+            dependency group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.1.1.RELEASE'
+            dependency group: 'junit', name: 'junit', version: '4.13.1'
+            dependency group: 'com.xuxueli', name: 'xxl-job-core', version: '2.2.0'
+            dependency group: 'com.github.xiaoymin', name: 'knife4j-spring-boot-starter', version: '3.0.2'
+            dependency group: 'com.alibaba', name: 'druid-spring-boot-starter', version: '1.2.4'
+            dependency 'com.aliyun.oss:aliyun-sdk-oss:3.10.2'
+            dependency group: 'org.apache.shardingsphere', name: 'shardingsphere-jdbc-core-spring-boot-starter', version: '4.1.0'
+            dependency group: 'aspectj', name: 'aspectjrt', version: '1.5.4'
+            dependency group: 'commons-io', name: 'commons-io', version: '2.8.0'
+            dependency group: 'javax', name: 'javaee-api', version: '8.0.1'
+            dependency group: 'org.apache.skywalking', name: 'apm-toolkit-trace', version: '8.4.0'
+            dependency group: 'javax', name: 'javaee-api', version: '8.0.1'
+            dependency group: 'org.bouncycastle', name: 'bcprov-jdk15on', version: '1.56'
+            dependency group: 'io.github.yangyouwang', name: 'wrapper', version: '1.5'
+            dependency group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
+            dependency group: 'cn.afterturn', name: 'easypoi-spring-boot-starter', version: '4.2.0'
+            dependency group: 'org.apache.curator', name: 'curator-recipes', version: '2.8.0'
+        }
+        generatedPomCustomization {
+            enabled = false
+        }
+        resolutionStrategy {
+            cacheChangingModulesFor 0, "seconds"
+        }
+        repositories {
+            mavenCentral()
+            //noinspection GroovyAssignabilityCheck
+            maven {
+                url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            }
+        }
+    }
+    //noinspection GroovyAssignabilityCheck
+    configurations.all {
+        //noinspection GroovyAssignabilityCheck
+        resolutionStrategy {
+            cacheChangingModulesFor 0, "seconds"
+            cacheDynamicVersionsFor 0, "seconds"
+        }
+    }
+}

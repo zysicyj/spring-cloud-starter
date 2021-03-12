@@ -1,0 +1,12 @@
+spring:
+    profiles:
+        active: dev
+    application:
+        name: gateway
+    cloud:
+        nacos:
+            config:
+                server-addr: 40.73.99.191:18848
+                file-extension: yaml
+                namespace: a87ad7e5-ae2c-4b7b-8446-c6151c2d2ba4
+                group: DEFAULT_GROUP
